@@ -143,8 +143,7 @@
           height: 100%;
           min-height: 10vh;
           width: var(--sidbar-width);
-          background: linear-gradient(
-                hsl(232, 40%, 16%),
+          background: linear-gradient(hsl(232, 40%, 16%),
                   hsl(219, 60%, 30%));
           background-size: cover;
           background-position: center;
@@ -158,8 +157,9 @@
       #content-wrapper {
           padding-left: var(--sidbar-width);
       }
-      
+
   }
+
   /* Button */
 
   .btn {
@@ -228,6 +228,18 @@
 
   .custom-card:hover .custom-card-image img {
       transform: scale(1.1);
+  }
+
+  .custom-card-blog-cont {
+      width: 100%;
+      
+  }
+
+  .custom-card-blog iframe {
+      height: 580px;
+      width: 99%;
+      border-radius: 3%;
+      
   }
 
   /* Contact */
