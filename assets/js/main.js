@@ -35,3 +35,14 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
+
+// To collapse  the navigation menu after clicking an option
+function collapseNavbar() {
+  const navbarCollapse = document.getElementById('navbarNav');
+  const navbarToggle = document.querySelector('.navbar-toggler');
+  if (navbarCollapse.classList.contains('show')) {
+    navbarCollapse.classList.remove('show');
+    navbarToggle.setAttribute('aria-expanded', 'false');
+  }
+}

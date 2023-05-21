@@ -1,5 +1,5 @@
   @import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=swap');
 
 
   :root {
@@ -7,6 +7,7 @@
       --color-heading: #4B88F6;
       --color-base: hsl(233, 55%, 19%);
       --color-base2: #365ea9;
+      --first-eye: hsl(219, 99%, 50%);
       --color-brand: #fdfdfe;
       --color-brand2: #365ea9;
       --color-text1: #fdfdfe;
@@ -106,12 +107,25 @@
       color: white;
   }
 
+  @media (max-width: 991px) {
+      .navbar .nav-link {
+          font-weight: 700;
+          text-transform: uppercase;
+          color: white;
+          margin-left:43%;
+      }
+  }
+
+
   .navbar .nav-link:hover {
       color: var(--color-brand2);
   }
 
   .navbar .nav-link.active {
-      color: var(--color-brand2);
+      color: var(--color-brand);
+      background-color: var(--first-eye);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
   }
 
   .full-height {
@@ -316,4 +330,8 @@
   .vertical-text {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
+  }
+
+  #first-eye {
+      color: var(--first-eye);
   }
