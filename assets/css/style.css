@@ -230,16 +230,23 @@
       transform: scale(1.1);
   }
 
-  .custom-card-blog-cont {
+  .blog-container {
       width: 100%;
-      
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+
+      .blog-card{
+        flex: 0 0 auto;
+      }
   }
 
-  .custom-card-blog iframe {
-      height: 580px;
-      width: 99%;
+  .blog-card iframe {
+      height:500px;
+      width: 90%;
       border-radius: 3%;
       
+
   }
 
   /* Contact */
