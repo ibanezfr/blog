@@ -160,6 +160,10 @@
 
   }
 
+
+
+
+
   /* Button */
 
   .btn {
@@ -235,17 +239,18 @@
       display: flex;
       flex-wrap: nowrap;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
 
-      .blog-card{
-        flex: 0 0 auto;
+      .blog-card {
+          flex: 0 0 auto;
       }
   }
 
   .blog-card iframe {
-      height:500px;
+      height: 500px;
       width: 90%;
       border-radius: 3%;
-      
+
 
   }
 
@@ -284,4 +289,31 @@
       background-color: var(--color-base2);
       border-radius: 100px;
       font-size: 25px;
+  }
+
+  #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 97px;
+      right: 20px;
+      z-index: 99;
+      /* border: 0.5px solid var(--color-body); */
+      border: none;
+      outline: #365ea9;
+      background-color: hsl(233, 70%, 19%, 0.05);
+      color: var(--color-heading);
+      cursor: pointer;
+      padding: 7px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 900;
+  }
+
+  #myBtn:hover {
+      background-color: var(--color-text1);
+  }
+
+  .vertical-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
   }
