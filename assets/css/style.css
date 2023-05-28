@@ -388,4 +388,7 @@
       .embed-cert {
           display: none;
       }
+      #henry-cert-link{
+        pointer-events: none;
+      }
   }
