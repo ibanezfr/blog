@@ -260,7 +260,7 @@
       width: 100%;
       display: flex;
       flex-wrap: nowrap;
-      overflow-x: auto;
+      overflow: auto;
       -webkit-overflow-scrolling: touch;
       flex-direction: row;
       justify-content: flex-start;
@@ -279,12 +279,14 @@
       margin-right: 10px;
       transition: transform 0.3s;
       z-index: 1;
+      overflow: hidden;
   }
 
   .blog-card:hover {
       opacity: 1;
       z-index: 2;
       overflow-y: hidden;
+      overflow-x: hidden;
   }
 
   .blog-card:hover img {
@@ -301,8 +303,8 @@
   }
 
   .blog-card img {
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 100%;
+      max-height: auto;
       object-fit: cover;
       border-radius: 5%;
       transition: opacity 0.3s;
