@@ -44,7 +44,7 @@
                         <a class="nav-link" href="#about" onclick="collapseNavbar()">Sobre mí
                         </a>
                         <a class="nav-link" href="#contact" onclick="collapseNavbar()">Contacto</a>
-                        <a class="nav-link" href="#socials" onclick="collapseNavbar()">Mis redes</a>
+                        <a class="nav-link" href="#footer" onclick="collapseNavbar()">Footer</a>
                     </li>
 
                 </ul>
@@ -60,26 +60,32 @@
         <section class="full-height px-lg-5" id="home">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-10">
-                        <h1 class="display-4 fw-bold mt-2 mb-4" data-aos="zoom-in-right">
-                            <!-- <span id="first-eye" class="text-brand">Franco Ibañez</span>, desarrollo<span id="first-eye" -->
-                            Franco Ezequiel Ibañez
-                        </h1>
-                        <h2><span id="first-eye">desarrollador</span> Web Full Stack</h2>
-
-                        <div data-aos="zoom-in-right" data-aos-delay="450">
-                            <a href="./assets/cv-resume/CV_Resume - Franco Ibanez - Fullstack.pdf"
-                                download="CV-Resume-Franco-Ibanez-Full-Stack-Developer"
-                                class="btn btn-brand me-3 mb-4">Descargar el CV</a>
+                    <div class="col-lg-10 header-container">
+                        <div class="main-header">
+                            <h1 class="display-4 fw-bold mt-2 mb-4" data-aos="zoom-in-right">Franco Ezequiel Ibañez</h1>
+                            <h2><span id="first-eye">desarrollador</span> Web Full Stack</h2>
                         </div>
-                        <div data-aos="zoom-in-right" data-aos-delay="600">
-                            <a href="#work" class="btn btn-brand me-3">Mis Proyectos</a>
+                        <div class="home-buttons">
+                            <div data-aos="zoom-in-right" data-aos-delay="450">
+                                <a href="./assets/cv-resume/CV_Resume - Franco Ibanez - Fullstack.pdf"
+                                    download="CV-Resume-Franco-Ibanez-Full-Stack-Developer"
+                                    class="btn btn-brand me-3 mb-4">Descargar el CV</a>
+                            </div>
+                            <div data-aos="zoom-in-right" data-aos-delay="600">
+                                <a href="#work" class="btn btn-brand me-3">Mis Proyectos</a>
+                            </div>
                         </div>
-
-                        <div class="mt-4" data-aos="zoom-in-right" data-aos-delay="700">
-                            <a href="#socials" class="btn btn-brand me-3">Mis Redes</a>
-                        </div>
-
+                    </div>
+                    <div class="social-icons-home">
+                        <a href="https://twitter.com/francoibanezweb" target="_blank" rel="noopener noreferrer">
+                            <i class="lab la-twitter"></i>
+                        </a>
+                        <a href="https://github.com/francoibanezweb" target="_blank" rel="noopener noreferrer">
+                            <i class="lab la-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/francoibanezweb" target="_blank" rel="noopener noreferrer">
+                            <i class="lab la-linkedin"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -209,27 +215,27 @@
                         <h1>Sobre mí:</h1>
                     </div>
                 </div>
-                            <div class="col-12" data-aos="zoom-in-right" data-aos-delay="600">
-                                <div class="bg-base p-4 rounded-4 shadow-effect">
-                                    <p class="mb-2 lead" data-aos="zoom-in-right" data-aos-delay="300">Poseo
-                                        experiencia
-                                        en el diseño, desarrollo y mantenimiento de aplicaciones web. Poseo habilidades
-                                        tanto en el
-                                        desarrollo del lado del servidor como el lado del cliente, y estoy familiarizado
-                                        con varias
-                                        tecnologías y lenguajes de programación. Incluyendo <strong>HTML</strong>,
-                                        <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>Node.js</strong>,
-                                        <strong>React</strong> y <strong>Redux</strong>. Además soy capaz de trabajar en
-                                        ambientes
-                                        tanto de desarrollo como de producción y de colaborar eficazmente con otros
-                                        miembros del
-                                        equipo. Tengo una sólida comprensión de los principios fundamentales de la
-                                        programación y
-                                        estoy comprometido a mantenerme actualizado sobre las últimas tendencias y
-                                        tecnologías.
-                                    </p>
-                                </div>
-                            </div>
+                <div class="col-12" data-aos="zoom-in-right" data-aos-delay="600">
+                    <div class="bg-base p-4 rounded-4 shadow-effect">
+                        <p class="mb-2 lead" data-aos="zoom-in-right" data-aos-delay="300">Poseo
+                            experiencia
+                            en el diseño, desarrollo y mantenimiento de aplicaciones web. Poseo habilidades
+                            tanto en el
+                            desarrollo del lado del servidor como el lado del cliente, y estoy familiarizado
+                            con varias
+                            tecnologías y lenguajes de programación. Incluyendo <strong>HTML</strong>,
+                            <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>Node.js</strong>,
+                            <strong>React</strong> y <strong>Redux</strong>. Además soy capaz de trabajar en
+                            ambientes
+                            tanto de desarrollo como de producción y de colaborar eficazmente con otros
+                            miembros del
+                            equipo. Tengo una sólida comprensión de los principios fundamentales de la
+                            programación y
+                            estoy comprometido a mantenerme actualizado sobre las últimas tendencias y
+                            tecnologías.
+                        </p>
+                    </div>
+                </div>
         </section>
         <!-- //About -->
 
@@ -279,7 +285,7 @@
         <!-- //Contact -->
 
         <!-- Footer -->
-        <section id="socials">
+        <section id="footer">
             <div class="py-5 px-lg-5">
                 <div class="contain">
                     <div class="row gy-4 justify-content-between">
@@ -288,14 +294,18 @@
                                 <p id="footer-auth">&copy; @francoibanezweb 2023</p>
                             </div>
                         </div>
-                        <div id="socials" class="col-auto">
-                            <div class="social-icons">
-                                <!--     <a href="https://wa.link/douy7u"><i class="lab la-whatsapp"></i></a> -->
-                                <a href="https://www.linkedin.com/in/francoibanezweb"> <i
-                                        class="lab la-linkedin"></i></a>
-                                <a href="https://github.com/francoibanezweb"> <i class="lab la-github"></i></a>
-                                <a href="https://twitter.com/francoibanezweb"> <i class="lab la-twitter"></i></a>
-                                <!-- <a href="#"> <i class="lab la-instagram"></i></a> -->
+                        <div id="socials-footer" class="col-auto">
+                            <div class="social-icons-footer">
+                                <a href="https://www.linkedin.com/in/francoibanezweb" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <i class="lab la-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/francoibanezweb" target="_blank" rel="noopener noreferrer">
+                                    <i class="lab la-github"></i>
+                                </a>
+                                <a href="https://twitter.com/francoibanezweb" target="_blank" rel="noopener noreferrer">
+                                    <i class="lab la-twitter"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -303,6 +313,7 @@
             </div>
         </section>
         <!-- //Footer -->
+
     </div>
     <!-- //Content Wrapper -->
 
