@@ -33,9 +33,9 @@ function topFunction() {
 
 function toggleNavbar() {
   var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
+  if (prevScrollpos > currentScrollPos && window.innerWidth <= 991) {
     document.querySelector('.navbar').classList.remove('hidden');
-  } else {
+  } else if (window.innerWidth <= 991) {
     document.querySelector('.navbar').classList.add('hidden');
   }
   prevScrollpos = currentScrollPos;
