@@ -49,3 +49,73 @@ function collapseNavbar() {
     navbarToggle.setAttribute('aria-expanded', 'false');
   }
 }
+
+function calculateDaysAgo(articleDate) {
+  var currentDate = new Date();
+  var targetDate = new Date(articleDate);
+  var timeDiff = currentDate.getTime() - targetDate.getTime();
+  var daysAgo = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  return daysAgo;
+}
+
+
+function formatDaysAgo(days) {
+  switch (true) {
+    case days < 1:
+      return 'Hoy';
+    case days < 7:
+      return days + (days === 1 ? ' día' : ' días') + ' atrás';
+    case days < 30:
+      return Math.floor(days / 7) + (Math.floor(days / 7) === 1 ? ' semana' : ' semanas') + ' atrás';
+    case days < 365:
+      return Math.floor(days / 30) + (Math.floor(days / 30) === 1 ? ' mes' : ' meses') + ' atrás';
+    default:
+      return Math.floor(days / 365) + (Math.floor(days / 365) === 1 ? ' año' : ' años') + ' atrás';
+  }
+}
+
+
+fetch('./assets/json/es.json')
+  .then(response => response.json())
+  .then(data => {
+    const articles = data.articles;
+    const list = document.querySelector('#article-list');
+
+    // Loop through the articles and generate list items
+    articles.forEach(article => {
+      const listItem = document.createElement('a');
+      listItem.classList.add('list-group-item', 'list-group-item-action');
+
+      const contentDiv = document.createElement('div');
+      contentDiv.classList.add('d-flex', 'w-100', 'justify-content-between');
+
+      const title = document.createElement('h5');
+      title.classList.add('mb-1');
+      title.textContent = article.title;
+
+      const daysAgoSmall = document.createElement('small');
+      daysAgoSmall.textContent = formatDaysAgo(calculateDaysAgo(article.date));
+
+      contentDiv.appendChild(title);
+      contentDiv.appendChild(daysAgoSmall);
+
+      listItem.appendChild(contentDiv);
+
+      const descP = document.createElement('p');
+      descP.classList.add('mb-1');
+      descP.textContent = article.desc;
+      listItem.appendChild(descP);
+
+      const smallPrint = document.createElement('small');
+      smallPrint.classList.add('text-body-secondary');
+      smallPrint.textContent = article.tags;
+      listItem.appendChild(smallPrint);
+
+      listItem.href = article.url;
+      listItem.target = '_blank';
+
+      list.appendChild(listItem);
+    });
+  })
+  .catch(error => console.error('Error fetching JSON:', error));
+
