@@ -123,7 +123,7 @@ function initializeArticleList() {
         contentDiv.classList.add('d-flex', 'w-100', 'justify-content-between');
 
         const title = document.createElement('h5');
-        title.classList.add('mb-1');
+        title.classList.add('mb-1', 'articleTitle');
         title.textContent = article.title;
 
         const daysAgoSmall = document.createElement('small');
@@ -135,12 +135,13 @@ function initializeArticleList() {
         listItem.appendChild(contentDiv);
 
         const descP = document.createElement('p');
-        descP.classList.add('mb-1');
+        descP.classList.add('mb-1', 'articleSubTitle');
         descP.textContent = article.desc;
         listItem.appendChild(descP);
 
         const smallPrint = document.createElement('small');
         smallPrint.classList.add('text-body-secondary');
+        smallPrint.classList.add('articleTags');
         smallPrint.textContent = article.tags;
         listItem.appendChild(smallPrint);
 

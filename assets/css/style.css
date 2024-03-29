@@ -39,13 +39,27 @@
       font-weight: 700;
   }
 
+  .articleTitle {
+      color: var(--first-eye);
+      font-weight: 900;
+  }
+
+  .articleSubTitle{
+    color: var(--color-base3);
+    font-weight: 600;
+  }
+
+  .articleTags {
+    font-weight: 600;
+  }
+
   p {
       color: var(--color-text1);
       font-weight: 500;
   }
 
-  #footer-p{
-    color: var(--color-text2);
+  #footer-p {
+      color: var(--color-text2);
   }
 
   a {
