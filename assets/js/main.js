@@ -50,6 +50,40 @@ function collapseNavbar() {
   }
 }
 
+function applyTranslations(data) {
+
+  const htmlElmt = document.querySelector('html');
+  const titleElmt = document.querySelector('title');
+  const authorNameSpan = document.querySelector('span.h3.fw-bold.d-block.d-lg-none#author-name');
+  const sectionHeader = document.querySelector('div.section-header.text-brand');
+  const firstEyeSpan = document.querySelector('#first-eye-h2');
+
+  htmlElmt.lang = data["html-lang"];
+  titleElmt.innerText = data.title;
+  authorNameSpan.innerText = data["author-name"];
+  sectionHeader.innerText = data["blog-section"];
+  firstEyeSpan.innerHTML = data["first-eye"];
+
+  for (const key in data.translations) {
+    const element = document.getElementById(key);
+    if (element) {
+      element.innerText = data.translations[key];
+    } else {
+      console.warn(`Element with ID ${key} not found.`);
+    }
+  }
+}
+
+const userLanguage = navigator.language || navigator.userLanguage;
+
+let lang = userLanguage.startsWith('es') ? './assets/json/es.json' : './assets/json/en.json';
+
+// Cargar las traducciones desde el archivo correspondiente
+fetch(lang)
+  .then(response => response.json())
+  .then(applyTranslations)
+  .catch(error => console.error('Error loading translations:', error));
+
 function calculateDaysAgo(articleDate) {
   var currentDate = new Date();
   var targetDate = new Date(articleDate);
@@ -58,64 +92,67 @@ function calculateDaysAgo(articleDate) {
   return daysAgo;
 }
 
-
-function formatDaysAgo(days) {
+function formatDaysAgo(days, strings) {
   switch (true) {
     case days < 1:
-      return 'Hoy';
+      return strings.today;
     case days < 7:
-      return days + (days === 1 ? ' día' : ' días') + ' atrás';
+      return days + (days === 1 ? strings.day : strings.days) + strings.ago;
     case days < 30:
-      return Math.floor(days / 7) + (Math.floor(days / 7) === 1 ? ' semana' : ' semanas') + ' atrás';
+      return Math.floor(days / 7) + (Math.floor(days / 7) === 1 ? strings.week : strings.weeks) + strings.ago;
     case days < 365:
-      return Math.floor(days / 30) + (Math.floor(days / 30) === 1 ? ' mes' : ' meses') + ' atrás';
+      return Math.floor(days / 30) + (Math.floor(days / 30) === 1 ? strings.month : strings.months) + strings.ago;
     default:
-      return Math.floor(days / 365) + (Math.floor(days / 365) === 1 ? ' año' : ' años') + ' atrás';
+      return Math.floor(days / 365) + (Math.floor(days / 365) === 1 ? strings.year : strings.years) + strings.ago;
   }
 }
 
+function initializeArticleList() {
+  fetch(lang)
+    .then(response => response.json())
+    .then(data => {
+      const articles = data.articles;
+      const daysAgoStrings = data.formatDaysAgo;
+      const list = document.querySelector('#article-list');
 
-fetch('./assets/json/es.json')
-  .then(response => response.json())
-  .then(data => {
-    const articles = data.articles;
-    const list = document.querySelector('#article-list');
+      articles.forEach(article => {
+        const listItem = document.createElement('a');
+        listItem.classList.add('list-group-item', 'list-group-item-action');
 
-    // Loop through the articles and generate list items
-    articles.forEach(article => {
-      const listItem = document.createElement('a');
-      listItem.classList.add('list-group-item', 'list-group-item-action');
+        const contentDiv = document.createElement('div');
+        contentDiv.classList.add('d-flex', 'w-100', 'justify-content-between');
 
-      const contentDiv = document.createElement('div');
-      contentDiv.classList.add('d-flex', 'w-100', 'justify-content-between');
+        const title = document.createElement('h5');
+        title.classList.add('mb-1');
+        title.textContent = article.title;
 
-      const title = document.createElement('h5');
-      title.classList.add('mb-1');
-      title.textContent = article.title;
+        const daysAgoSmall = document.createElement('small');
+        daysAgoSmall.textContent = formatDaysAgo(calculateDaysAgo(article.date), daysAgoStrings);
 
-      const daysAgoSmall = document.createElement('small');
-      daysAgoSmall.textContent = formatDaysAgo(calculateDaysAgo(article.date));
+        contentDiv.appendChild(title);
+        contentDiv.appendChild(daysAgoSmall);
 
-      contentDiv.appendChild(title);
-      contentDiv.appendChild(daysAgoSmall);
+        listItem.appendChild(contentDiv);
 
-      listItem.appendChild(contentDiv);
+        const descP = document.createElement('p');
+        descP.classList.add('mb-1');
+        descP.textContent = article.desc;
+        listItem.appendChild(descP);
 
-      const descP = document.createElement('p');
-      descP.classList.add('mb-1');
-      descP.textContent = article.desc;
-      listItem.appendChild(descP);
+        const smallPrint = document.createElement('small');
+        smallPrint.classList.add('text-body-secondary');
+        smallPrint.textContent = article.tags;
+        listItem.appendChild(smallPrint);
 
-      const smallPrint = document.createElement('small');
-      smallPrint.classList.add('text-body-secondary');
-      smallPrint.textContent = article.tags;
-      listItem.appendChild(smallPrint);
+        listItem.href = article.url;
+        listItem.target = '_blank';
 
-      listItem.href = article.url;
-      listItem.target = '_blank';
+        list.appendChild(listItem);
+      });
 
-      list.appendChild(listItem);
-    });
-  })
-  .catch(error => console.error('Error fetching JSON:', error));
+      
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+}
 
+document.addEventListener('DOMContentLoaded', initializeArticleList);

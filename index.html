@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" id="html-lang">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ibanezfr</title>
+    <title id="title"></title>
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/aos.css">
     <link rel="stylesheet" href="./assets/css/line-awesome.min.css">
@@ -24,9 +24,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container flex-lg-column" id="left-menu">
             <a class="navbar-brand mx-lg-auto mb-lg-4" href="#home">
-                <span class="h3 fw-bold d-block d-lg-none">Franco Ezequiel Ibañez</span>
-                <img src="./assets/images/pfp-azul-gradiente-2.webp" class="d-none d-lg-block rounded-circle"
-                    id="persona1">
+                <span class="h3 fw-bold d-block d-lg-none" id="author-name"></span>
+                <img src="./assets/images/pfp-azul-gradiente-2.webp" class="d-none d-lg-block rounded-circle" id="persona1">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,8 +35,8 @@
                 <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#home" onclick="collapseNavbar()">Inicio</a>
-                        <a class="nav-link" href="#blog" onclick="collapseNavbar()">Blog</a>
+                        <a class="nav-link" href="#home" onclick="collapseNavbar()" id="home-btn"></a>
+                        <a class="nav-link" href="#blog" onclick="collapseNavbar()" id="blog-btn"></a>
                     </li>
 
                 </ul>
@@ -55,17 +54,16 @@
                 <div class="row">
                     <div class="col-lg-10 header-container" id="main-message">
                         <div class="main-header">
-                            <h1 class="display-4 fw-bold mt-2 mb-4" data-aos="zoom-in-right">Franco Ezequiel Ibañez</h1>
-                            <h2 data-aos="zoom-in-right" data-aos-delay="200"><span id="first-eye">AI Intern,</span> estudiante 2do año Ing. en Sistemas</h2>
+                            <h1 class="display-4 fw-bold mt-2 mb-4" data-aos="zoom-in-right" id="first-eye-h1"></h1>
+                            <h2 data-aos="zoom-in-right" data-aos-delay="200" id="first-eye-h2"></h2>
                         </div>
                         <div class="home-buttons">
                             <div data-aos="zoom-in-right" data-aos-delay="300">
-                                <a href="https://docs.google.com/document/d/e/2PACX-1vSk-Z7N60BbMm5nVzqg8JNc2OHy6okb-LsD_yHlgr1yab6s0ho49LFR6uO8KmEBKy3eTq-bAp2Kc5NZ/pub"
-                                    target="_blank"
-                                    class="btn btn-brand me-3 mb-4">Consultar CV</a>
+                                <a href=""
+                                    target="_blank" class="btn btn-brand me-3 mb-4" id="cv"></a>
                             </div>
                             <div data-aos="zoom-in-right" data-aos-delay="400">
-                                <a href="#blog" class="btn btn-brand me-3">Blog</a>
+                                <a href="#blog" class="btn btn-brand me-3" id="blog-btn-2"></a>
                             </div>
                         </div>
                     </div>
@@ -80,13 +78,12 @@
             <div class="container">
                 <div class="row pb-4" data-aos="zoom-in-right">
                     <div class="col-lg-8">
-                        <div class="section-header text-brand">BLOG</div>
-                        <h1>Mis artículos:</h1>
+                        <div class="section-header text-brand"></div>
+                        <h1 id="blog-section-h1"></h1>
                     </div>
                 </div>
 
-                <ol class="list-group" id="article-list"
-                data-aos="zoom-in-right" data-aos-delay="400">
+                <ol class="list-group" id="article-list" data-aos="zoom-in-right" data-aos-delay="500">
 
                 </ol>
             </div>
@@ -101,7 +98,7 @@
                     <div class="row gy-4 justify-content-between">
                         <div class="col-auto">
                             <div class="mb-0 text-brand">
-                                <p id="footer-auth">Franco E. Ibañez 2024 &copy;</p>
+                                <p id="footer-p"></p>
                             </div>
                         </div>
                         <div id="socials-footer" class="col-auto">
