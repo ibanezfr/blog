@@ -74,50 +74,49 @@ function applyTranslations(data) {
   }
 }
 
-const userLanguage = navigator.language || navigator.userLanguage;
+let currentLangCode = ''
 
-let lang = userLanguage.startsWith('es') ? './assets/json/es.json' : './assets/json/en.json';
+document.addEventListener('DOMContentLoaded', function () {
+  const userLanguage = navigator.language || navigator.userLanguage;
+  const langCode = userLanguage.startsWith('es') ? 'es' : 'en';
 
-// Cargar las traducciones desde el archivo correspondiente
-fetch(lang)
-  .then(response => response.json())
-  .then(applyTranslations)
-  .catch(error => console.error('Error loading translations:', error));
+  const languageButtons = document.querySelectorAll('.dropdown-item');
 
-function calculateDaysAgo(articleDate) {
-  var currentDate = new Date();
-  var targetDate = new Date(articleDate);
-  var timeDiff = currentDate.getTime() - targetDate.getTime();
-  var daysAgo = Math.ceil(timeDiff / (1000 * 3600 * 24));
-  return daysAgo;
-}
+  fetchAndRenderArticles(langCode);
 
-function formatDaysAgo(days, strings) {
-  switch (true) {
-    case days < 1:
-      return strings.today;
-    case days < 7:
-      return days + (days === 1 ? strings.day : strings.days) + strings.ago;
-    case days < 30:
-      return Math.floor(days / 7) + (Math.floor(days / 7) === 1 ? strings.week : strings.weeks) + strings.ago;
-    case days < 365:
-      return Math.floor(days / 30) + (Math.floor(days / 30) === 1 ? strings.month : strings.months) + strings.ago;
-    default:
-      return Math.floor(days / 365) + (Math.floor(days / 365) === 1 ? strings.year : strings.years) + strings.ago;
-  }
-}
+  languageButtons.forEach(button => {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      const langCode = button.getAttribute('data-lang-code');
 
-function initializeArticleList() {
-  fetch(lang)
+      if (currentLangCode !== langCode) {
+        fetchAndRenderArticles(langCode);
+      }
+    });
+
+  });
+});
+
+
+function fetchAndRenderArticles(langCode) {
+  const langFile = `./assets/json/${langCode}.json`;
+
+  fetch(langFile)
     .then(response => response.json())
     .then(data => {
+      applyTranslations(data)
       const articles = data.articles;
       const daysAgoStrings = data.formatDaysAgo;
       const list = document.querySelector('#article-list');
 
+      if (langCode !== currentLangCode) {
+        list.innerHTML = '';
+        currentLangCode = langCode;
+      }
+
       articles.forEach(article => {
         const listItem = document.createElement('a');
-        listItem.classList.add('list-group-item', 'list-group-item-action');
+        listItem.classList.add('list-group-item', 'list-group-item-action', langCode);
 
         const contentDiv = document.createElement('div');
         contentDiv.classList.add('d-flex', 'w-100', 'justify-content-between');
@@ -150,10 +149,30 @@ function initializeArticleList() {
 
         list.appendChild(listItem);
       });
-
-      
     })
-    .catch(error => console.error('Error fetching JSON:', error));
+    .catch(error => console.error('Error loading translations:', error));
 }
 
-document.addEventListener('DOMContentLoaded', initializeArticleList);
+
+function calculateDaysAgo(articleDate) {
+  var currentDate = new Date();
+  var targetDate = new Date(articleDate);
+  var timeDiff = currentDate.getTime() - targetDate.getTime();
+  var daysAgo = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  return daysAgo;
+}
+
+function formatDaysAgo(days, strings) {
+  switch (true) {
+    case days < 1:
+      return strings.today;
+    case days < 7:
+      return days + (days === 1 ? strings.day : strings.days) + strings.ago;
+    case days < 30:
+      return Math.floor(days / 7) + (Math.floor(days / 7) === 1 ? strings.week : strings.weeks) + strings.ago;
+    case days < 365:
+      return Math.floor(days / 30) + (Math.floor(days / 30) === 1 ? strings.month : strings.months) + strings.ago;
+    default:
+      return Math.floor(days / 365) + (Math.floor(days / 365) === 1 ? strings.year : strings.years) + strings.ago;
+  }
+}

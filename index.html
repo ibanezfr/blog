@@ -25,7 +25,8 @@
         <div class="container flex-lg-column" id="left-menu">
             <a class="navbar-brand mx-lg-auto mb-lg-4" href="#home">
                 <span class="h3 fw-bold d-block d-lg-none" id="author-name"></span>
-                <img src="./assets/images/pfp-azul-gradiente-2.webp" class="d-none d-lg-block rounded-circle" id="persona1">
+                <img src="./assets/images/pfp-azul-gradiente-2.webp" class="d-none d-lg-block rounded-circle"
+                    id="persona1">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +38,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#home" onclick="collapseNavbar()" id="home-btn"></a>
                         <a class="nav-link" href="#blog" onclick="collapseNavbar()" id="blog-btn"></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false" id="languageBtn"></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-lang-code="en">English 🇬🇧</a></li>
+                            <li><a class="dropdown-item" href="#" data-lang-code="es">Español 🇪🇸</a></li>
+                            <!-- <li><a class="dropdown-item" href="#">Deutsch 🇩🇪</a></li> -->
+                        </ul>
                     </li>
 
                 </ul>
@@ -59,8 +69,7 @@
                         </div>
                         <div class="home-buttons">
                             <div data-aos="zoom-in-right" data-aos-delay="300">
-                                <a href=""
-                                    target="_blank" class="btn btn-brand me-3 mb-4" id="cv"></a>
+                                <a href="" target="_blank" class="btn btn-brand me-3 mb-4" id="cv"></a>
                             </div>
                             <div data-aos="zoom-in-right" data-aos-delay="400">
                                 <a href="#blog" class="btn btn-brand me-3" id="blog-btn-2"></a>

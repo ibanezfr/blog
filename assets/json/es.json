@@ -12,7 +12,8 @@
     "cv": "Consultar CV",
     "first-eye-h1": "Franco Ezequiel Ibañez",
     "home-btn": "Inicio",
-    "blog-btn": "Blog"
+    "blog-btn": "Blog",
+    "languageBtn": "Idioma"
   },
   "formatDaysAgo": {
     "today": "Hoy",

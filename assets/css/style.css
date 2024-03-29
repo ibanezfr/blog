@@ -213,14 +213,13 @@
   }
 
   .navbar .nav-link:hover {
-      color: var(--color-brand2);
+      color: var(--color-base);
+      
   }
 
   .navbar .nav-link.active {
       color: var(--color-brand);
       background-color: var(--first-eye);
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-
   }
 
   .full-height {
