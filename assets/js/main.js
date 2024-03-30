@@ -128,7 +128,7 @@ function fetchAndRenderArticles(langCode) {
         title.textContent = article.title;
 
         const daysAgoSmall = document.createElement('small');
-        daysAgoSmall.textContent = formatDaysAgo(calculateDaysAgo(article.date), daysAgoStrings);
+        daysAgoSmall.textContent = formatDaysAgo(calculateDaysAgo(article.date), daysAgoStrings, langCode);
 
         contentDiv.appendChild(title);
         contentDiv.appendChild(daysAgoSmall);
@@ -164,17 +164,33 @@ function calculateDaysAgo(articleDate) {
   return daysAgo;
 }
 
-function formatDaysAgo(days, strings) {
-  switch (true) {
-    case days < 1:
-      return strings.today;
-    case days < 7:
-      return days + (days === 1 ? strings.day : strings.days) + strings.ago;
-    case days < 30:
-      return Math.floor(days / 7) + (Math.floor(days / 7) === 1 ? strings.week : strings.weeks) + strings.ago;
-    case days < 365:
-      return Math.floor(days / 30) + (Math.floor(days / 30) === 1 ? strings.month : strings.months) + strings.ago;
-    default:
-      return Math.floor(days / 365) + (Math.floor(days / 365) === 1 ? strings.year : strings.years) + strings.ago;
+function formatDaysAgo(days, strings, langCode) {
+
+  if (langCode == "es") {
+    switch (true) {
+      case days < 1:
+        return strings.today;
+      case days < 7:
+        return strings.ago + days + (days === 1 ? strings.day : strings.days);
+      case days < 30:
+        return strings.ago + Math.floor(days / 7) + (Math.floor(days / 7) === 1 ? strings.week : strings.weeks);
+      case days < 365:
+        return strings.ago + Math.floor(days / 30) + (Math.floor(days / 30) === 1 ? strings.month : strings.months);
+      default:
+        return strings.ago + Math.floor(days / 365) + (Math.floor(days / 365) === 1 ? strings.year : strings.years);
+    }
+  } else {
+    switch (true) {
+      case days < 1:
+        return strings.today;
+      case days < 7:
+        return days + (days === 1 ? strings.day : strings.days) + strings.ago;
+      case days < 30:
+        return Math.floor(days / 7) + (Math.floor(days / 7) === 1 ? strings.week : strings.weeks) + strings.ago;
+      case days < 365:
+        return Math.floor(days / 30) + (Math.floor(days / 30) === 1 ? strings.month : strings.months) + strings.ago;
+      default:
+        return Math.floor(days / 365) + (Math.floor(days / 365) === 1 ? strings.year : strings.years) + strings.ago;
+    }
   }
 }
