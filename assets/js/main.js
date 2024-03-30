@@ -57,12 +57,14 @@ function applyTranslations(data) {
   const authorNameSpan = document.querySelector('span.h3.fw-bold.d-block.d-lg-none#author-name');
   const sectionHeader = document.querySelector('div.section-header.text-brand');
   const firstEyeSpan = document.querySelector('#first-eye-h2');
+  const cv = document.querySelector('.home-buttons #cv');
 
   htmlElmt.lang = data["html-lang"];
   titleElmt.innerText = data.title;
   authorNameSpan.innerText = data["author-name"];
   sectionHeader.innerText = data["blog-section"];
   firstEyeSpan.innerHTML = data["first-eye"];
+  cv.setAttribute('href', data["cv-url"]);
 
   for (const key in data.translations) {
     const element = document.getElementById(key);
