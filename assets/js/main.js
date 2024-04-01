@@ -5,7 +5,7 @@ AOS.init({
   delay: 0,
   duration: 600,
   easing: 'ease',
-  once: false,
+  once: true,
   mirror: false,
   anchorPlacement: 'top-bottom',
 });
@@ -84,7 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const languageButtons = document.querySelectorAll('.dropdown-item');
 
-  fetchAndRenderArticles(langCode);
+  renderTagsSections(langCode);
+  // fetchAndRenderArticles(langCode);
 
   languageButtons.forEach(button => {
     button.addEventListener('click', function (event) {
@@ -92,68 +93,106 @@ document.addEventListener('DOMContentLoaded', function () {
       const langCode = button.getAttribute('data-lang-code');
 
       if (currentLangCode !== langCode) {
-        fetchAndRenderArticles(langCode);
+        renderTagsSections(langCode);
+        // fetchAndRenderArticles(langCode);
       }
     });
 
   });
 });
 
-
-function fetchAndRenderArticles(langCode) {
+function renderTagsSections(langCode) {
   const langFile = `./assets/json/${langCode}.json`;
 
   fetch(langFile)
     .then(response => response.json())
     .then(data => {
-      applyTranslations(data)
+      applyTranslations(data);
       const articles = data.articles;
-      const daysAgoStrings = data.formatDaysAgo;
-      const list = document.querySelector('#article-list');
+      const categories = data.categories;
+      const accordion = document.querySelector('#tagAccordion');
 
-      if (langCode !== currentLangCode) {
-        list.innerHTML = '';
-        currentLangCode = langCode;
-      }
+      accordion.innerHTML = '';
 
-      articles.forEach(article => {
-        const listItem = document.createElement('a');
-        listItem.classList.add('list-group-item','list-group-item-action', langCode);
-        listItem.setAttribute('aria-current', 'true');
+      categories.forEach((category, index) => {
+        const accordionItem = document.createElement('div');
+        accordionItem.classList.add('accordion-item');
 
-        const contentDiv = document.createElement('div');
-        contentDiv.classList.add('d-flex', 'w-100', 'justify-content-between');
+        const accordionHeader = document.createElement('h2');
+        accordionHeader.classList.add('accordion-header');
 
-        const title = document.createElement('h5');
-        title.classList.add('mb-1', 'articleTitle');
-        title.textContent = article.title;
+        const button = document.createElement('button');
+        button.classList.add('accordion-button');
+        button.setAttribute('type', 'button');
+        button.setAttribute('data-bs-toggle', 'collapse');
+        button.setAttribute('data-bs-target', `#collapse${index}`);
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-controls', `collapse${index}`);
+        button.textContent = "#" + category;
 
-        const daysAgoSmall = document.createElement('small');
-        daysAgoSmall.textContent = formatDaysAgo(calculateDaysAgo(article.date), daysAgoStrings, langCode);
+        const collapseDiv = document.createElement('div');
+        collapseDiv.id = `collapse${index}`;
+        collapseDiv.classList.add('accordion-collapse', 'collapse');
+        collapseDiv.setAttribute('data-bs-parent', '#tagAccordion');
 
-        contentDiv.appendChild(title);
-        contentDiv.appendChild(daysAgoSmall);
+        if (index === 0) {
+          collapseDiv.classList.add('show');
+        }
 
-        listItem.appendChild(contentDiv);
+        const accordionBody = document.createElement('div');
+        accordionBody.classList.add('accordion-body');
+        accordionBody.innerHTML = `<ol class="list-group" id="article-list-${index}"></ol>`;
 
-        const descP = document.createElement('p');
-        descP.classList.add('mb-1', 'articleSubTitle');
-        descP.textContent = article.desc;
-        listItem.appendChild(descP);
+        collapseDiv.appendChild(accordionBody);
+        accordionHeader.appendChild(button);
+        accordionItem.appendChild(accordionHeader);
+        accordionItem.appendChild(collapseDiv);
+        accordion.appendChild(accordionItem);
 
-        const smallPrint = document.createElement('small');
-        smallPrint.classList.add('text-body-secondary');
-        smallPrint.classList.add('articleTags');
-        smallPrint.textContent = article.tags;
-        listItem.appendChild(smallPrint);
+        const daysAgoStrings = data.formatDaysAgo;
 
-        listItem.href = article.url;
-        listItem.target = '_blank';
+        articles.forEach(article => {
+          if (article.tags === category) {
+            const listItem = document.createElement('a');
+            listItem.classList.add('list-group-item', 'list-group-item-action', langCode);
 
-        list.appendChild(listItem);
+            const contentDiv = document.createElement('div');
+            contentDiv.classList.add('d-flex', 'w-100', 'justify-content-between');
+
+            const title = document.createElement('h5');
+            title.classList.add('mb-1', 'articleTitle');
+            title.textContent = article.title;
+
+            const daysAgoSmall = document.createElement('small');
+            daysAgoSmall.textContent = formatDaysAgo(calculateDaysAgo(article.date), daysAgoStrings, langCode);
+
+            contentDiv.appendChild(title);
+            contentDiv.appendChild(daysAgoSmall);
+
+            listItem.appendChild(contentDiv);
+
+            const descP = document.createElement('p');
+            descP.classList.add('mb-1', 'articleSubTitle');
+            descP.textContent = article.desc;
+            listItem.appendChild(descP);
+
+            const smallPrint = document.createElement('small');
+            smallPrint.classList.add('text-body-secondary');
+            smallPrint.classList.add('articleTags');
+            smallPrint.textContent = "#" + article.tags;
+            listItem.appendChild(smallPrint);
+
+            listItem.href = article.url;
+            listItem.target = '_blank';
+
+            const articleList = document.querySelector(`#article-list-${index}`);
+            articleList.appendChild(listItem);
+
+          }
+        });
       });
     })
-    .catch(error => console.error('Error loading translations:', error));
+    .catch(error => console.error('Error loading JSON file:', error));
 }
 
 

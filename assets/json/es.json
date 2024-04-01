@@ -27,53 +27,58 @@
     "years": " años",
     "ago": "Hace "
   },
+  "categories": [
+    "mecanografía",
+    "navegador",
+    "terminal"
+  ],
   "articles": [
     {
       "title": "¿Porqué deberías aprender mecanografía este 2023?",
       "desc": "Divulgando la importancia de saber tipear al tacto.",
-      "tags": "#productividad",
+      "tags": "mecanografía",
       "date": "2023-05-17",
       "url": "https://www.linkedin.com/pulse/porqu%25C3%25A9-deber%25C3%25ADas-aprender-mecanograf%25C3%25ADa-este-2023-franco-iba%25C3%25B1ez/"
     },
     {
       "title": "¿Te gustaría ahorrar tiempo en tus búsquedas en LinkedIn?",
       "desc": "Sobre cómo crear un shortcut en la barra de búsqueda del navegador.",
-      "tags": "#productividad",
+      "tags": "navegador",
       "date": "2023-05-08",
       "url": "https://www.linkedin.com/pulse/te-gustar%25C3%25ADa-ahorrar-tiempo-en-tus-b%25C3%25BAsquedas-linkedin-aprende-iba%25C3%25B1ez/?trackingId=Ls4axrKIS2KfP9GnEeEW%2Fw%3D%3D"
     },
     {
       "title": "Shortcuts de Terminal 1",
       "desc": "Para moverse mejor en la línea de comandos.",
-      "tags": "#productividad",
+      "tags": "terminal",
       "date": "2023-05-01",
       "url": "https://www.linkedin.com/pulse/atajos-de-teclado-la-terminal-bash-para-navegaci%25C3%25B3n-franco-iba%25C3%25B1ez/?trackingId=Ls4axrKIS2KfP9GnEeEW%2Fw%3D%3D"
     },
     {
       "title": "Shortcuts de Terminal 2",
       "desc": "Para editar mejor en la línea de comandos.",
-      "tags": "#productividad",
+      "tags": "terminal",
       "date": "2023-05-02",
       "url": "https://www.linkedin.com/pulse/atajos-de-teclado-la-terminal-bash-para-edici%25C3%25B3n-franco-iba%25C3%25B1ez/?trackingId=Ls4axrKIS2KfP9GnEeEW%2Fw%3D%3D"
     },
     {
       "title": "Shortcuts de Terminal 3",
       "desc": "Para aprovechar mejor el historial de comandos.",
-      "tags": "#productividad",
+      "tags": "terminal",
       "date": "2023-05-03",
       "url": "https://www.linkedin.com/pulse/atajos-de-teclado-la-terminal-bash-para-el-historial-franco-iba%25C3%25B1ez/?trackingId=Ls4axrKIS2KfP9GnEeEW%2Fw%3D%3D"
     },
     {
       "title": "Shortcuts de Terminal 4",
       "desc": "Para visualizar información útil según el contexto o alternativas de autocompletado.",
-      "tags": "#productividad",
+      "tags": "terminal",
       "date": "2023-05-04",
       "url": "https://www.linkedin.com/pulse/atajos-de-teclado-la-terminal-bash-para-obtener-franco-iba%25C3%25B1ez/?trackingId=Ls4axrKIS2KfP9GnEeEW%2Fw%3D%3D"
     },
     {
       "title": "Shortcuts de Terminal 5",
       "desc": "Para administrar Procesos en ejecución.",
-      "tags": "#productividad",
+      "tags": "terminal",
       "date": "2023-05-05",
       "url": "https://www.linkedin.com/pulse/atajos-de-teclado-la-terminal-bash-para-el-control-procesos-iba%25C3%25B1ez/?trackingId=Ls4axrKIS2KfP9GnEeEW%2Fw%3D%3D"
     }

@@ -27,53 +27,58 @@
     "years": " years",
     "ago": " ago"
   },
+  "categories": [
+    "typing",
+    "browser",
+    "terminal"
+  ],
   "articles": [
     {
       "title": "Why should you learn touch typing in 2023?",
       "desc": "Promoting the importance of touch typing skills.",
-      "tags": "#productivity",
+      "tags": "typing",
       "date": "2023-05-17",
       "url": "https://www.linkedin.com/pulse/porqu%25C3%25A9-deber%25C3%25ADas-aprender-mecanograf%25C3%25ADa-este-2023-franco-iba%25C3%25B1ez/"
     },
     {
       "title": "Save Time on LinkedIn Searches: Keyboard Shortcuts Guide",
       "desc": "About how to create a shortcut in the browser's search bar.",
-      "tags": "#productivity",
+      "tags": "browser",
       "date": "2024-04-01",
       "url": "https://www.linkedin.com/pulse/save-time-linkedin-searches-keyboard-shortcuts-guide-franco-iba%25C3%25B1ez-smh7f"
     },
     {
       "title": "Terminal Shortcuts 1",
       "desc": "To navigate more efficiently in the command line.",
-      "tags": "#productivity",
+      "tags": "terminal",
       "date": "2024-03-30",
       "url": "https://www.linkedin.com/pulse/terminal-shortcuts-1-franco-iba%25C3%25B1ez-mfjpf"
     },
     {
       "title": "Terminal Shortcuts 2",
       "desc": "To edit more effectively in the command line.",
-      "tags": "#productivity",
+      "tags": "terminal",
       "date": "2024-03-30",
       "url": "https://www.linkedin.com/pulse/terminal-shortcuts-2-franco-iba%25C3%25B1ez-mpftf"
     },
     {
       "title": "Terminal Shortcuts 3",
       "desc": "Para aprovechar mejor el historial de comandos.",
-      "tags": "#productivity",
+      "tags": "terminal",
       "date": "2024-03-30",
       "url": "https://www.linkedin.com/pulse/terminal-shortcuts-3-franco-iba%25C3%25B1ez-akzpf"
     },
     {
       "title": "Terminal Shortcuts 4",
       "desc": "To make better use of the command history.",
-      "tags": "#productivity",
+      "tags": "terminal",
       "date": "2024-03-30",
       "url": "https://www.linkedin.com/pulse/terminal-shortcuts-4-franco-iba%25C3%25B1ez-g3enf"
     },
     {
       "title": "Terminal Shortcuts 5",
       "desc": "To manage running processes.",
-      "tags": "#productivity",
+      "tags": "terminal",
       "date": "2024-03-30",
       "url": "https://www.linkedin.com/pulse/terminal-shortcuts-5-franco-iba%25C3%25B1ez-htqpf"
     }
