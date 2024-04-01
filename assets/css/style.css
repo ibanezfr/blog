@@ -560,11 +560,7 @@
     border-color: var(--first-eye);
   }
 
-  #blog{
-    position: relative;
-    top: -277px;
-  }
-
   .accordion-button {
     font-weight: 800;
   }
+
