@@ -118,7 +118,8 @@ function fetchAndRenderArticles(langCode) {
 
       articles.forEach(article => {
         const listItem = document.createElement('a');
-        listItem.classList.add('list-group-item', 'list-group-item-action', langCode);
+        listItem.classList.add('list-group-item','list-group-item-action', langCode);
+        listItem.setAttribute('aria-current', 'true');
 
         const contentDiv = document.createElement('div');
         contentDiv.classList.add('d-flex', 'w-100', 'justify-content-between');
