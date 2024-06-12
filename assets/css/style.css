@@ -553,6 +553,16 @@
       .social-icons-footer a {
           margin-left: 5px;
       }
+
+      .list-group-item.list-group-item-action{
+        font-size: small;
+      }
+      h5.mb-1.articleTitle{
+        font-size: large;
+      }
+      p.mb-1.articleSubTitle{
+        font-size: medium;
+      }
   }
 
   .list-group-item.list-group-item-action:hover{
@@ -563,4 +573,3 @@
   .accordion-button {
     font-weight: 800;
   }
-
